@@ -61,25 +61,24 @@ public final class SmsService extends Service {
             SmsManager sms = Build.VERSION.SDK_INT >= 31 ? getSystemService(SmsManager.class).createForSubscriptionId(subscription) : SmsManager.getSmsManagerForSubscriptionId(subscription);
             int total = 0; JSONArray initial = LocalStore.load(this).getJSONArray("rows"); for (int i = 0; i < initial.length(); i++) if (initial.getJSONObject(i).optString("status").equals("queued")) total++;
             while (!cancelled) {
-                JSONObject campaign = LocalStore.load(this);
-                JSONArray rows = campaign.getJSONArray("rows");
-                JSONObject claim = null; int recipient = -1;
-                for (int i = 0; i < rows.length(); i++) if (rows.getJSONObject(i).optString("status").equals("queued")) { claim = rows.getJSONObject(i); recipient = i; break; }
+                JSONObject claim = LocalStore.claim(this, UUID.randomUUID().toString());
                 if (claim == null) { finalText = getString(R.string.notif_done); break; }
-                claim.put("status", "sending").put("attemptId", UUID.randomUUID().toString());
-                LocalStore.save(this, campaign);
+                int recipient = claim.getInt("index");
                 ArrayList<String> parts = sms.divideMessage(claim.getString("text"));
                 JSONArray codes = new JSONArray();
                 for (int i = 0; i < parts.size(); i++) codes.put(AttemptState.PENDING);
                 JSONObject record = new JSONObject().put("recipientId", recipient).put("attemptId", claim.getString("attemptId")).put("codes", codes);
                 Journal.put(this, record); // Persist before handing anything to the radio.
-                ArrayList<PendingIntent> callbacks = new ArrayList<>();
+                ArrayList<PendingIntent> callbacks = new ArrayList<>(), deliveries = new ArrayList<>();
                 for (int i = 0; i < parts.size(); i++) {
                     Intent event = new Intent(this, SmsSentReceiver.class).setData(Uri.parse("relay://sms/" + claim.getString("attemptId") + "/" + i)).putExtra("attemptId", claim.getString("attemptId")).putExtra("part", i);
                     callbacks.add(PendingIntent.getBroadcast(this, i, event, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE));
+                    // Mutable so the system can attach the report PDU.
+                    Intent report = new Intent(this, SmsDeliveredReceiver.class).setData(Uri.parse("relay://delivery/" + claim.getString("attemptId") + "/" + i)).putExtra("attemptId", claim.getString("attemptId")).putExtra("part", i).putExtra("parts", parts.size());
+                    deliveries.add(PendingIntent.getBroadcast(this, i, report, PendingIntent.FLAG_UPDATE_CURRENT | (Build.VERSION.SDK_INT >= 31 ? PendingIntent.FLAG_MUTABLE : 0)));
                 }
-                if (parts.size() == 1) sms.sendTextMessage(claim.getString("phone"), null, parts.get(0), callbacks.get(0), null);
-                else sms.sendMultipartTextMessage(claim.getString("phone"), null, parts, callbacks, null);
+                if (parts.size() == 1) sms.sendTextMessage(claim.getString("phone"), null, parts.get(0), callbacks.get(0), deliveries.get(0));
+                else sms.sendMultipartTextMessage(claim.getString("phone"), null, parts, callbacks, deliveries);
                 long timeout = SystemClock.elapsedRealtime() + 90_000;
                 String outcome = null;
                 while (SystemClock.elapsedRealtime() < timeout) {

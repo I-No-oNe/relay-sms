@@ -12,5 +12,6 @@
         </activity>
         <service android:name=".SmsService" android:exported="false" android:foregroundServiceType="remoteMessaging" />
         <receiver android:name=".SmsSentReceiver" android:exported="false" />
+        <receiver android:name=".SmsDeliveredReceiver" android:exported="false" />
     </application>
 </manifest>

@@ -83,7 +83,7 @@ public final class MainActivity extends Activity {
             home();
         } catch (Exception error) { error(error); }
     }
-    @Override protected void onResume() { super.onResume(); handler.postDelayed(refresh, 1500); }
+    @Override protected void onResume() { super.onResume(); if (screen.equals("home") && data != null) home(); handler.postDelayed(refresh, 1500); }
     @Override protected void onPause() { handler.removeCallbacks(refresh); super.onPause(); }
 
     private int dp(int value) { return Math.round(value * getResources().getDisplayMetrics().density); }
@@ -195,9 +195,9 @@ public final class MainActivity extends Activity {
         screen = "home";
         try {
             data = LocalStore.load(this);
-            int pending = 0, approved = 0, sent = 0, failed = 0, uncertain = 0, skipped = 0, queued = 0, sending = 0;
+            int pending = 0, approved = 0, sent = 0, delivered = 0, failed = 0, uncertain = 0, skipped = 0, queued = 0, sending = 0;
             for (int i = 0; i < rows().length(); i++) {
-                switch (rows().getJSONObject(i).optString("status", "pending")) { case "pending": pending++; break; case "approved": approved++; break; case "queued": queued++; break; case "sending": sending++; break; case "sent": sent++; break; case "failed": failed++; break; case "uncertain": uncertain++; break; case "skipped": skipped++; break; }
+                switch (rows().getJSONObject(i).optString("status", "pending")) { case "pending": pending++; break; case "approved": approved++; break; case "queued": queued++; break; case "sending": sending++; break; case "sent": sent++; break; case "delivered": delivered++; sent++; break; case "undelivered": failed++; break; case "failed": failed++; break; case "uncertain": uncertain++; break; case "skipped": skipped++; break; }
             }
             boolean running = SmsService.RUNNING.get(), prepared = data.optBoolean("prepared"); int total = rows().length();
             if (total == 0) {
@@ -231,21 +231,23 @@ public final class MainActivity extends Activity {
             }
             close(outer);
             if (failed + uncertain > 0) notice(getString(R.string.failed_notice, failed, uncertain), false);
-            if (prepared) stats(new int[]{sent, queued + sending, skipped}, new int[]{R.string.stat_sent, R.string.stat_waiting, R.string.stat_skipped});
+            if (prepared) stats(new int[]{sent, delivered, queued + sending, skipped}, new int[]{R.string.stat_sent, R.string.stat_delivered, R.string.stat_waiting, R.string.stat_skipped});
             else stats(new int[]{approved, pending, skipped}, new int[]{R.string.stat_approved, R.string.stat_to_review, R.string.stat_skipped});
             recipients(!prepared && !running);
         } catch (Exception error) { error(error); }
     }
     private static int rank(String status) {
-        switch (status) { case "failed": return 0; case "uncertain": return 1; case "sending": return 2; case "pending": return 3; case "queued": return 4; case "approved": return 5; case "sent": return 6; default: return 7; }
+        switch (status) { case "failed": case "undelivered": return 0; case "uncertain": return 1; case "sending": return 2; case "pending": return 3; case "queued": return 4; case "approved": return 5; case "sent": return 6; case "delivered": return 7; default: return 8; }
     }
     private String status(String value) {
-        switch (value) { case "approved": return getString(R.string.status_approved); case "queued": return getString(R.string.status_queued); case "sending": return getString(R.string.status_sending); case "sent": return getString(R.string.status_sent); case "failed": return getString(R.string.status_failed); case "uncertain": return getString(R.string.status_uncertain); case "skipped": return getString(R.string.status_skipped); default: return getString(R.string.status_pending); }
+        switch (value) { case "approved": return getString(R.string.status_approved); case "queued": return getString(R.string.status_queued); case "sending": return getString(R.string.status_sending); case "sent": return getString(R.string.status_sent); case "delivered": return getString(R.string.status_delivered); case "undelivered": return getString(R.string.status_undelivered); case "failed": return getString(R.string.status_failed); case "uncertain": return getString(R.string.status_uncertain); case "skipped": return getString(R.string.status_skipped); default: return getString(R.string.status_pending); }
     }
     // Text and background color for each status pill.
     private static int[] colors(String value) {
         switch (value) {
-            case "sent": return new int[]{GREEN, GREEN_SOFT};
+            case "sent": return new int[]{0xff15803d, 0xffeaf6ee};
+            case "delivered": return new int[]{0xffffffff, GREEN};
+            case "undelivered": return new int[]{0xffb42318, 0xfffdecea};
             case "approved": return new int[]{0xff0e7490, 0xffe0f2f5};
             case "queued": return new int[]{0xff1d4ed8, 0xffe7eefd};
             case "sending": return new int[]{0xff6d28d9, 0xfff0eafd};
@@ -272,7 +274,7 @@ public final class MainActivity extends Activity {
                 entry(list, name, shownPhone, status(state), colors(state), editable ? () -> { try { row.put("status", "pending"); save(); review(index); } catch (Exception e) { error(e); } } : null);
             }
             list.setVisibility(matches == 0 ? View.GONE : View.VISIBLE);
-            more.setText(matches == 0 ? getString(R.string.no_recipients_found) : matches > limit ? getString(R.string.showing_limit, limit, matches) : getString(R.string.sent_meaning));
+            more.setText(matches == 0 ? getString(R.string.no_recipients_found) : matches > limit ? getString(R.string.showing_limit, limit, matches) : "");
         };
         search.addTextChangedListener(watcher(render)); render.run();
     }

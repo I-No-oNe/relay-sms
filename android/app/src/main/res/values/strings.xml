@@ -43,7 +43,9 @@
     <string name="no_name">No name</string>
     <string name="showing_limit">Showing %1$d of %2$d. Search to narrow down.</string>
     <string name="no_recipients_found">No recipients found.</string>
-    <string name="sent_meaning">"Sent" means the message left the phone, not that it was delivered.</string>
+    <string name="status_delivered">Delivered</string>
+    <string name="status_undelivered">Not delivered</string>
+    <string name="stat_delivered">Delivered</string>
     <string name="title_loading">Loading file...</string>
     <string name="file_empty">The file is empty.</string>
     <string name="title_columns">Choose columns</string>

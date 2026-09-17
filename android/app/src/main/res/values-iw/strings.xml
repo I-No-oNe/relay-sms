@@ -44,7 +44,9 @@
     <string name="no_name">ללא שם</string>
     <string name="showing_limit">מוצגים %1$d מתוך %2$d. אפשר לחפש כדי לצמצם.</string>
     <string name="no_recipients_found">לא נמצאו נמענים.</string>
-    <string name="sent_meaning">״נשלחה״ = יצאה מהטלפון, לא בהכרח נמסרה.</string>
+    <string name="status_delivered">נמסרה</string>
+    <string name="status_undelivered">לא נמסרה</string>
+    <string name="stat_delivered">נמסרו</string>
     <string name="title_loading">טוען קובץ...</string>
     <string name="file_empty">הקובץ ריק.</string>
     <string name="title_columns">בחירת עמודות</string>
