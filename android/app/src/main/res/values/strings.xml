@@ -1,0 +1,139 @@
+<resources>
+    <string name="app_name" translatable="false">Relay SMS</string>
+    <string name="title_home">Send messages</string>
+    <string name="home_intro">Excel or CSV file with a name column and a phone column, up to %1$s recipients. For example:</string>
+    <string name="example_name">Name</string>
+    <string name="example_phone">Phone</string>
+    <string name="example_name_1">Alex Morgan</string>
+    <string name="example_phone_1">(201) 555-0123</string>
+    <string name="example_name_2">Sam Lee</string>
+    <string name="example_phone_2">(201) 555-0187</string>
+    <string name="choose_file">Choose file</string>
+    <string name="new_file">New file</string>
+    <string name="start_over_title">Start over?</string>
+    <string name="start_over_message">The current list and results will be deleted once the new file loads.</string>
+    <string name="cancel">Cancel</string>
+    <string name="back">‹ Back</string>
+    <string name="running_progress">Sent %1$d of %2$d. You can close the app.</string>
+    <string name="stop_after_current">Stop after the current message</string>
+    <string name="paused_progress">Paused. Sent %1$d of %2$d.</string>
+    <plurals name="send_messages">
+        <item quantity="one">Send 1 message</item>
+        <item quantity="other">Send %d messages</item>
+    </plurals>
+    <string name="finished">✓ Sending finished</string>
+    <string name="reviewed_progress">Reviewed %1$d of %2$d</string>
+    <string name="continue_review">Continue review</string>
+    <string name="write_messages">Write messages</string>
+    <string name="failed_notice">⚠ %1$d failed · %2$d unclear. They won\'t be sent again.</string>
+    <string name="stat_sent">Sent</string>
+    <string name="stat_waiting">Waiting</string>
+    <string name="stat_skipped">Skipped</string>
+    <string name="stat_approved">Approved</string>
+    <string name="stat_to_review">To review</string>
+    <string name="status_approved">Approved</string>
+    <string name="status_queued">Queued</string>
+    <string name="status_sending">Sending</string>
+    <string name="status_sent">Sent</string>
+    <string name="status_failed">Failed</string>
+    <string name="status_uncertain">Unclear</string>
+    <string name="status_skipped">Skipped</string>
+    <string name="status_pending">To review</string>
+    <string name="search_hint">Search by name or number</string>
+    <string name="no_name">No name</string>
+    <string name="showing_limit">Showing %1$d of %2$d. Search to narrow down.</string>
+    <string name="no_recipients_found">No recipients found.</string>
+    <string name="sent_meaning">"Sent" means the message left the phone, not that it was delivered.</string>
+    <string name="title_loading">Loading file...</string>
+    <string name="file_empty">The file is empty.</string>
+    <string name="title_columns">Choose columns</string>
+    <string name="column_item">Column %1$d · %2$s</string>
+    <string name="phone_column">Phone column</string>
+    <string name="name_column">Name column</string>
+    <string name="no_name_column">No name column</string>
+    <string name="first_row">First row</string>
+    <string name="no_such_row">⚠ No such row in the file.</string>
+    <plurals name="rows_to_load">
+        <item quantity="one">1 recipient will be loaded</item>
+        <item quantity="other">%d recipients will be loaded</item>
+    </plurals>
+    <string name="max_warning">" · ⚠ Up to %1$s"</string>
+    <string name="continue_to_review">Continue to review</string>
+    <string name="invalid_first_row">Choose a valid first row. Up to %1$s recipients can be loaded.</string>
+    <string name="name_rule">Names must use</string>
+    <string-array name="scripts">
+        <item>Any language</item>
+        <item>Hebrew letters</item>
+        <item>Latin letters</item>
+        <item>Arabic letters</item>
+        <item>Cyrillic letters</item>
+    </string-array>
+    <string name="issue_script">The name must use %1$s. Fix it or skip this recipient.</string>
+    <string name="issue_phone">This doesn\'t look like a valid phone number.</string>
+    <string name="issue_duplicate">This number appears more than once. Skip one of the duplicates.</string>
+    <string name="ready">All good.</string>
+    <string name="no_name_ready">No name, the general message will be sent.</string>
+    <string name="title_review">Review names</string>
+    <string name="approve_valid">Approve all %1$d valid</string>
+    <string name="skip_invalid_phones">Skip %1$d without a valid number</string>
+    <string name="name_label">Name</string>
+    <string name="name_hint">Can be left empty</string>
+    <string name="phone_label">Phone number</string>
+    <string name="approve_next">Approve and continue</string>
+    <string name="skip_recipient">Skip recipient</string>
+    <string name="check_name">Check name</string>
+    <string name="title_messages">Messages</string>
+    <plurals name="approved_count">
+        <item quantity="one">1 approved recipient. Each gets a random version.</item>
+        <item quantity="other">%d approved recipients. Each gets a random version.</item>
+    </plurals>
+    <string name="variant_label">Version %1$d</string>
+    <string name="insert_name">＋ Recipient name</string>
+    <string name="sms_one">1 SMS per recipient</string>
+    <string name="sms_parts">⚠ Up to %1$d SMS per recipient</string>
+    <plurals name="generic_label">
+        <item quantity="one">General message for 1 recipient without a name</item>
+        <item quantity="other">General message for %d recipients without a name</item>
+    </plurals>
+    <string name="add_fourth">＋ Fourth version</string>
+    <string name="remove_fourth">Remove fourth version</string>
+    <string name="consent">Recipients agreed to get messages from me</string>
+    <string name="prepare">Prepare to send</string>
+    <string name="err_consent">Confirm that recipients agreed to get messages.</string>
+    <string name="err_variant">Each version needs 1 to 600 characters. The only placeholder is {{name}}.</string>
+    <string name="err_generic">The general message needs 1 to 600 characters, without {{name}}.</string>
+    <string name="err_review_first">Finish reviewing recipients first.</string>
+    <string name="err_invalid_rows">Some names or numbers are invalid or duplicated. Review the list again.</string>
+    <string name="err_none_approved">Approve at least one recipient.</string>
+    <string name="err_permissions">To send, allow SMS and phone access. Nothing was sent.</string>
+    <string name="err_no_sim">No active SIM found.</string>
+    <string name="choose_sim">Send from which SIM?</string>
+    <string name="sim_label">SIM %1$d · %2$s</string>
+    <plurals name="confirm_title">
+        <item quantity="one">Send 1 message?</item>
+        <item quantity="other">Send %d messages?</item>
+    </plurals>
+    <string name="confirm_message">%1$s\nMessages are sent from your plan and may be charged. Long messages count as several SMS.\n\nEstimated time: about %2$d minutes. You can stop at any time.\n\nAfter about 30 messages Android asks whether to allow sending many messages. Choose to always allow, or sending will stop.</string>
+    <string name="send">Send</string>
+    <string name="error_title">Something went wrong</string>
+    <string name="save_failed">Saving failed. Try again.</string>
+    <string name="ok">OK</string>
+    <string name="default_variant_1">Hi {{name}}, we have an update we wanted to share with you.</string>
+    <string name="default_variant_2">Hello {{name}}, we wanted to let you know about something new.</string>
+    <string name="default_variant_3">{{name}}, hello! We have some news for you.</string>
+    <string name="default_generic">Hello, we have an update we wanted to share with you.</string>
+    <string name="channel_name">Sending progress</string>
+    <string name="notif_preparing">Getting ready to send...</string>
+    <string name="notif_progress">Sent %1$d of %2$d</string>
+    <string name="notif_stopped">Sending stopped. See the app for details.</string>
+    <string name="notif_done">Sending finished. Results are in the app.</string>
+    <string name="notif_paused">Paused: a message failed or its status is unclear. It won\'t be sent again.</string>
+    <string name="notif_stopped_user">Sending stopped. The remaining messages are saved.</string>
+    <string name="notif_stopped_error">Sending stopped. Check the SIM and the results before continuing.</string>
+    <string name="err_xls">Old .xls files aren\'t supported. Save the file as .xlsx or CSV.</string>
+    <string name="err_too_large">The file is too large.</string>
+    <string name="err_no_sheet">No worksheet found. Save the contacts sheet as CSV and try again.</string>
+    <string name="err_columns">The sheet can have up to 100 columns.</string>
+    <string name="err_too_many">Up to %1$s recipients can be loaded.</string>
+    <string name="err_csv_quote">The CSV file is broken: a quote isn\'t closed.</string>
+</resources>

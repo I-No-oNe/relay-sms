@@ -1,0 +1,148 @@
+<resources>
+    <string name="title_home">שליחת הודעות</string>
+    <string name="home_intro">קובץ Excel או CSV עם עמודת שם ועמודת טלפון, עד %1$s נמענים. לדוגמה:</string>
+    <string name="example_name">שם</string>
+    <string name="example_phone">טלפון</string>
+    <string name="example_name_1">דנה כהן</string>
+    <string name="example_phone_1">050-1234567</string>
+    <string name="example_name_2">יוסי לוי</string>
+    <string name="example_phone_2">052-7654321</string>
+    <string name="choose_file">בחירת קובץ</string>
+    <string name="new_file">קובץ חדש</string>
+    <string name="start_over_title">להתחיל מחדש?</string>
+    <string name="start_over_message">הרשימה והתוצאות הנוכחיות יימחקו ברגע שהקובץ החדש ייטען.</string>
+    <string name="cancel">ביטול</string>
+    <string name="back">‹ חזרה</string>
+    <string name="running_progress">נשלחו %1$d מתוך %2$d. אפשר לסגור את האפליקציה.</string>
+    <string name="stop_after_current">עצירה אחרי ההודעה הנוכחית</string>
+    <string name="paused_progress">השליחה הושהתה. נשלחו %1$d מתוך %2$d.</string>
+    <plurals name="send_messages">
+        <item quantity="one">שליחת הודעה אחת</item>
+        <item quantity="two">שליחת %d הודעות</item>
+        <item quantity="many">שליחת %d הודעות</item>
+        <item quantity="other">שליחת %d הודעות</item>
+    </plurals>
+    <string name="finished">✓ השליחה הסתיימה</string>
+    <string name="reviewed_progress">נבדקו %1$d מתוך %2$d</string>
+    <string name="continue_review">להמשך הבדיקה</string>
+    <string name="write_messages">לכתיבת ההודעות</string>
+    <string name="failed_notice">⚠ %1$d נכשלו · %2$d בסטטוס לא ברור. הן לא יישלחו שוב.</string>
+    <string name="stat_sent">נשלחו</string>
+    <string name="stat_waiting">ממתינות</string>
+    <string name="stat_skipped">דולגו</string>
+    <string name="stat_approved">אושרו</string>
+    <string name="stat_to_review">לבדיקה</string>
+    <string name="status_approved">אושר</string>
+    <string name="status_queued">בתור</string>
+    <string name="status_sending">נשלחת</string>
+    <string name="status_sent">נשלחה</string>
+    <string name="status_failed">נכשלה</string>
+    <string name="status_uncertain">לא ברור</string>
+    <string name="status_skipped">דולג</string>
+    <string name="status_pending">לבדיקה</string>
+    <string name="search_hint">חיפוש לפי שם או מספר</string>
+    <string name="no_name">ללא שם</string>
+    <string name="showing_limit">מוצגים %1$d מתוך %2$d. אפשר לחפש כדי לצמצם.</string>
+    <string name="no_recipients_found">לא נמצאו נמענים.</string>
+    <string name="sent_meaning">״נשלחה״ = יצאה מהטלפון, לא בהכרח נמסרה.</string>
+    <string name="title_loading">טוען קובץ...</string>
+    <string name="file_empty">הקובץ ריק.</string>
+    <string name="title_columns">בחירת עמודות</string>
+    <string name="column_item">עמודה %1$d · %2$s</string>
+    <string name="phone_column">עמודת טלפון</string>
+    <string name="name_column">עמודת שם</string>
+    <string name="no_name_column">ללא עמודת שם</string>
+    <string name="first_row">שורה ראשונה</string>
+    <string name="no_such_row">⚠ אין שורה כזאת בקובץ.</string>
+    <plurals name="rows_to_load">
+        <item quantity="one">ייטען נמען אחד</item>
+        <item quantity="two">ייטענו %d נמענים</item>
+        <item quantity="many">ייטענו %d נמענים</item>
+        <item quantity="other">ייטענו %d נמענים</item>
+    </plurals>
+    <string name="max_warning">" · ⚠ אפשר עד %1$s"</string>
+    <string name="continue_to_review">המשך לבדיקה</string>
+    <string name="invalid_first_row">יש לבחור שורה ראשונה תקינה. אפשר לטעון עד %1$s נמענים.</string>
+    <string name="name_rule">שפת השמות</string>
+    <string-array name="scripts">
+        <item>כל שפה</item>
+        <item>אותיות עבריות</item>
+        <item>אותיות לטיניות</item>
+        <item>אותיות ערביות</item>
+        <item>אותיות קיריליות</item>
+    </string-array>
+    <string name="issue_script">השם צריך להיות ב%1$s. אפשר לתקן אותו או לדלג על הנמען.</string>
+    <string name="issue_phone">המספר לא נראה כמו מספר טלפון תקין.</string>
+    <string name="issue_duplicate">המספר מופיע יותר מפעם אחת. יש לדלג על אחת הכפילויות.</string>
+    <string name="ready">הכול תקין.</string>
+    <string name="no_name_ready">אין שם, יישלח הנוסח הכללי.</string>
+    <string name="title_review">בדיקת שמות</string>
+    <string name="approve_valid">אישור כל ה־%1$d התקינים</string>
+    <string name="skip_invalid_phones">דילוג על %1$d בלי מספר תקין</string>
+    <string name="name_label">שם</string>
+    <string name="name_hint">אפשר להשאיר ריק</string>
+    <string name="phone_label">מספר טלפון</string>
+    <string name="approve_next">אישור והמשך</string>
+    <string name="skip_recipient">דילוג על הנמען</string>
+    <string name="check_name">שם לבדיקה</string>
+    <string name="title_messages">הודעות</string>
+    <plurals name="approved_count">
+        <item quantity="one">נמען אחד מאושר. כל אחד יקבל נוסח אקראי.</item>
+        <item quantity="two">%d נמענים מאושרים. כל אחד יקבל נוסח אקראי.</item>
+        <item quantity="many">%d נמענים מאושרים. כל אחד יקבל נוסח אקראי.</item>
+        <item quantity="other">%d נמענים מאושרים. כל אחד יקבל נוסח אקראי.</item>
+    </plurals>
+    <string name="variant_label">נוסח %1$d</string>
+    <string name="insert_name">＋ שם הנמען</string>
+    <string name="sms_one">הודעת SMS אחת לכל נמען</string>
+    <string name="sms_parts">⚠ עד %1$d הודעות SMS לכל נמען</string>
+    <plurals name="generic_label">
+        <item quantity="one">נוסח כללי לנמען אחד בלי שם</item>
+        <item quantity="two">נוסח כללי ל־%d נמענים בלי שם</item>
+        <item quantity="many">נוסח כללי ל־%d נמענים בלי שם</item>
+        <item quantity="other">נוסח כללי ל־%d נמענים בלי שם</item>
+    </plurals>
+    <string name="add_fourth">＋ נוסח רביעי</string>
+    <string name="remove_fourth">הסרת הנוסח הרביעי</string>
+    <string name="consent">הנמענים הסכימו לקבל ממני הודעות</string>
+    <string name="prepare">הכנה לשליחה</string>
+    <string name="err_consent">יש לסמן שהנמענים הסכימו לקבל הודעות.</string>
+    <string name="err_variant">כל נוסח צריך להכיל 1 עד 600 תווים. המשתנה היחיד שנתמך הוא {{name}}.</string>
+    <string name="err_generic">הנוסח הכללי צריך להכיל 1 עד 600 תווים, בלי {{name}}.</string>
+    <string name="err_review_first">יש לסיים קודם את בדיקת הנמענים.</string>
+    <string name="err_invalid_rows">יש שמות או מספרים לא תקינים או כפולים. כדאי לבדוק שוב את הרשימה.</string>
+    <string name="err_none_approved">צריך לאשר לפחות נמען אחד.</string>
+    <string name="err_permissions">כדי לשלוח צריך לאשר לאפליקציה גישה ל־SMS ולכרטיס ה־SIM. שום הודעה לא נשלחה.</string>
+    <string name="err_no_sim">לא נמצא כרטיס SIM פעיל.</string>
+    <string name="choose_sim">מאיזה SIM לשלוח?</string>
+    <string name="sim_label">SIM %1$d · %2$s</string>
+    <plurals name="confirm_title">
+        <item quantity="one">לשלוח הודעה אחת?</item>
+        <item quantity="two">לשלוח %d הודעות?</item>
+        <item quantity="many">לשלוח %d הודעות?</item>
+        <item quantity="other">לשלוח %d הודעות?</item>
+    </plurals>
+    <string name="confirm_message">%1$s\nההודעות נשלחות מהחבילה שלך ועשויות להיות מחויבות. הודעה ארוכה נספרת ככמה הודעות.\n\nזמן משוער: כ־%2$d דקות. אפשר לעצור בכל שלב.\n\nאחרי כ־30 הודעות Android ישאל אם לאפשר שליחה של הרבה הודעות. יש לבחור באפשרות לאשר תמיד, אחרת השליחה תיעצר.</string>
+    <string name="send">שליחה</string>
+    <string name="error_title">משהו לא הסתדר</string>
+    <string name="save_failed">השמירה נכשלה. כדאי לנסות שוב.</string>
+    <string name="ok">הבנתי</string>
+    <string name="default_variant_1">היי {{name}}, יש לנו עדכון חדש שרצינו לשתף איתך.</string>
+    <string name="default_variant_2">שלום {{name}}, רצינו לעדכן אותך במשהו חדש.</string>
+    <string name="default_variant_3">{{name}}, שלום! יש לנו חדשות ונשמח לספר לך.</string>
+    <string name="default_generic">שלום, יש לנו עדכון חדש שרצינו לשתף איתך.</string>
+    <string name="channel_name">התקדמות שליחה</string>
+    <string name="notif_preparing">מתכוננים לשליחה...</string>
+    <string name="notif_progress">נשלחו %1$d מתוך %2$d</string>
+    <string name="notif_stopped">השליחה נעצרה. הפרטים באפליקציה.</string>
+    <string name="notif_done">השליחה הסתיימה. התוצאות מחכות באפליקציה.</string>
+    <string name="notif_paused">השליחה הושהתה: הודעה נכשלה או שלא ברור אם נשלחה. היא לא תישלח שוב.</string>
+    <string name="notif_stopped_user">השליחה נעצרה. ההודעות שנותרו נשמרו להמשך.</string>
+    <string name="notif_stopped_error">השליחה נעצרה. כדאי לבדוק את כרטיס ה־SIM ואת התוצאות לפני שממשיכים.</string>
+    <string name="err_xls">קובצי xls ישנים לא נתמכים. יש לשמור את הקובץ כ־xlsx או CSV.</string>
+    <string name="err_too_large">הקובץ גדול מדי.</string>
+    <string name="err_no_sheet">לא נמצא גיליון בקובץ. אפשר לשמור את גיליון אנשי הקשר כ־CSV ולנסות שוב.</string>
+    <string name="err_columns">הגיליון יכול לכלול עד 100 עמודות.</string>
+    <string name="err_too_many">אפשר לטעון עד %1$s נמענים.</string>
+    <string name="err_csv_quote">קובץ ה־CSV פגום: יש מירכאה שלא נסגרה.</string>
+</resources>
