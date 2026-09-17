@@ -1,10 +1,12 @@
 package com.relay.sms;
 
-import org.junit.Test;
 import static org.junit.Assert.*;
 
+import org.junit.Test;
+
 public final class ContactRulesTest {
-    @Test public void namesFollowTheChosenScript() {
+    @Test
+    public void namesFollowTheChosenScript() {
         assertTrue(ContactRules.nameOk("Alex Morgan", "Latin"));
         assertFalse(ContactRules.nameOk("Дмитрий", "Latin"));
         assertTrue(ContactRules.nameOk("Дмитрий", "Cyrillic"));
@@ -14,15 +16,23 @@ public final class ContactRulesTest {
         assertTrue(ContactRules.nameOk("Anything 123", "any"));
         assertTrue(ContactRules.nameOk("", "Latin"));
     }
-    @Test public void defaultScriptComesFromLanguage() {
+
+    @Test
+    public void defaultScriptComesFromLanguage() {
         assertEquals("any", ContactRules.defaultScript("en"));
         assertEquals("Cyrillic", ContactRules.defaultScript("ru"));
         assertEquals("Hebrew", ContactRules.defaultScript("iw"));
     }
-    @Test public void whatsappNamesAreCleaned() {
+
+    @Test
+    public void whatsappNamesAreCleaned() {
         assertEquals("Alex Morgan", ContactRules.cleanName("\u200fAlex 🌸 Morgan\u200e"));
         assertEquals("Sam", ContactRules.cleanName("Sam 👍🏽"));
         assertEquals("", ContactRules.cleanName("❤️"));
     }
-    @Test public void replacementIsLiteral() { assertEquals("Hi Sam", ContactRules.render("Hi {{name}}", "Sam")); }
+
+    @Test
+    public void replacementIsLiteral() {
+        assertEquals("Hi Sam", ContactRules.render("Hi {{name}}", "Sam"));
+    }
 }
